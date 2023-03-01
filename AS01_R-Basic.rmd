@@ -1,0 +1,153 @@
+---
+title: "AS01_R-Basic-Intermediate_ref"
+author: "助教 何家慈 王薇"
+date: "2023/02/23"
+output:
+  html_document:
+    number_sections: no
+    theme: united
+    highlight: tango
+    toc: yes
+    toc_depth: 4
+    toc_float:
+      collapsed: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, results = 'hold', comment = '#>', error = TRUE)
+```
+
+## 作業目的:   
+
+這份作業希望能夠讓你熟悉    
+- R data structure    
+- conditioning and loop    
+
+記得到datacamp先練練基本功喔！
+祝寫作業愉快！有任何問題歡迎洽詢助教
+
+### vector
+
+(1) 有一個 vector 叫做 `value`，內容是從 51 到 100 之間的正整數，請利用`[]`從中取出質數，但不能用偷懶寫法直接取值 `value[51,...]`
+
+```{r warning=FALSE}
+# (1)
+
+### result should be
+#>  [1] 53 59 61 67 71 73 79 83 89 97
+```
+
+(2) 請利用兩種**不同的**方法，將`vector_02`變成`c(2,3,5)`，並將結果分別存到 `vector_03` 和 `vector_04` 裡面。但不能直接使用 assignment 的偷懶寫法 `vector_03 <- c(2,3,5)`
+
+```{r warning=FALSE}
+# (2)
+
+### your code
+# method01
+
+# method02
+
+```
+
+### list
+
+下方列出部分新聞所本學期開設課程，請協助
+
+(1) 抓出教師姓氏   
+(2) 計算學生人數平均   
+(3) 修改`student_quota`元素，將修課限制人數**加倍**，並將結果印出，造成老師困擾   
+(4) 在 list 中插入新元素 `weekday`，內容為 `c("一","三","五","三")`，並將`weekday`印出
+
+```{r}
+list_journalism <-
+  list(teacher=c("lin","hung","liang","wang"),
+       course=c("調查報導專題","全球化與傳播","採訪寫作二","電視新聞雜誌"),
+       student_quota=c(15,15,9,10),
+       dept="journalism")
+
+### your code
+# (1)
+
+### result should be
+#> [1]"lin" "hung"  "liang" "wang"  
+# (2)
+
+### result should be
+#> [1] 12.25
+# (3)
+
+### result should be
+#> [1] 30 30 18 20
+# (4) 
+
+### result should be
+#> [1] "一" "三" "五" "三"
+```
+
+### dataframe
+
+下方提供 The Economist 所開放的[大麥克指數](https://github.com/TheEconomist/big-mac-data/blob/master/source-data/big-mac-source-data.csv)原始資料，已經先篩選出 2021 年的資料。
+
+(1) 請篩選出台灣的資料並印出 dataframe   
+(2) 請印出 GDP dollar 的次小值(second minimum)   
+(3) 請找出哪個國家的 GDP_dollar 為 `3706.765`   
+(4) 請找出 local_price 曾經 < 3 的所有國家
+
+
+```{r}
+df_mac <- read.csv("data/AS01/df_mac_2021.csv")
+
+### your code
+# (1)
+
+### result should be
+#>       name local_price GDP_dollar
+#> 67  Taiwan          72   25873.37
+#> 139 Taiwan          72   28305.92
+# (2)
+
+### result should be
+#> [1] 1348.676
+# (3)
+
+### result should be
+#>       name  local_price   GDP_dollar
+#> 68  Ukraine          62    3706.765	
+# (4)
+
+### result should be
+#> [1] "Bahrain"   "Jordan"    "Kuwait"    "Lithuania" "Latvia"    "Oman"     
+#  [7] "Slovenia" 
+```
+
+### for loop & conditional statement
+
+台灣邦交地圖盤點：
+2016-2021年有8個邦交國確定與台灣斷交ಥ-ಥ，
+利用迴圈與條件判斷，印出亞太地區與拉美及加勒比海地區的邦交國。
+
+- 亞太地區邦交國有：馬紹爾群島、諾魯、帛琉、吐瓦魯國   
+- 拉美及加勒比海地區邦交國有：貝里斯、瓜地馬拉、海地、宏都拉斯、巴拉圭、 聖克里斯多福及尼維斯、聖文森國、聖露西亞 
+
+```{r message=FALSE, warning=FALSE}
+### your code
+vector <- c("馬紹爾群島","聖克里斯多福及尼維斯","諾魯","巴拉圭" ,"帛琉", "吐瓦魯國", "貝里斯","瓜地馬拉", "海地", "宏都拉斯", "聖露西亞", "聖文森國")
+
+
+
+### result should be
+#[1] "亞太地區有馬紹爾群島"
+#[1] "拉美及加勒比海地區有聖克里斯多福及尼維斯"
+#[1] "亞太地區有諾魯"
+#[1] "拉美及加勒比海地區有巴拉圭"
+#[1] "亞太地區有帛琉"
+#[1] "亞太地區有吐瓦魯國"
+#[1] "拉美及加勒比海地區有貝里斯"
+#[1] "拉美及加勒比海地區有瓜地馬拉"
+#[1] "拉美及加勒比海地區有海地"
+#[1] "拉美及加勒比海地區有宏都拉斯"
+#[1] "拉美及加勒比海地區有聖露西亞"
+#[1] "拉美及加勒比海地區有聖文森國"
+```
+
+
